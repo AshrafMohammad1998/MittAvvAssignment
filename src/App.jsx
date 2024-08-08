@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import ListSharpIcon from '@mui/icons-material/ListSharp';
 import RotateLeftSharpIcon from '@mui/icons-material/RotateLeftSharp';
 import RemoveRedEyeSharpIcon from '@mui/icons-material/RemoveRedEyeSharp';
@@ -32,7 +33,7 @@ function App() {
 
   const handleSubmit = () => {
     if (title && description) {
-      const newTodo = { title, description }
+      const newTodo = { id: uuidv4(), title, description }
       const updatedTodo = [...todos, newTodo]
       setTodos(updatedTodo)
       localStorage.setItem("todos", JSON.stringify(updatedTodo))
